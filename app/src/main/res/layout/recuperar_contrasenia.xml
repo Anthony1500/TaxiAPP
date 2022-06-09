@@ -44,7 +44,7 @@
             android:layout_width="351dp"
             android:layout_height="59dp"
             android:layout_gravity="center"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="44dp"
             android:background="@drawable/border_botton_top"
             android:backgroundTint="#FFAB40"
             android:gravity="center"
