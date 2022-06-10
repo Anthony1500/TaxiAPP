@@ -3,12 +3,12 @@ package com.example.taxiapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +18,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class recuperar_contrasenia extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
@@ -31,7 +33,7 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recuperar_contrasenia);
         cajacorreo=(EditText) findViewById(R.id.text_correo);
-        rq = Volley.newRequestQueue(this);
+        rq = Volley.newRequestQueue(recuperar_contrasenia.this);
         botonverificar=(Button) findViewById(R.id.btn_correo);
         botonverificar.setOnClickListener(new View.OnClickListener() {//Método para darle función al botón
 

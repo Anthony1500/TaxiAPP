@@ -19,7 +19,7 @@ public class Splash_Screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {// metodo para pasar de una pantalla a otra
-                Intent intent = new Intent(Splash_Screen.this, recuperar_contrasenia.class);
+                Intent intent = new Intent(Splash_Screen.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             };
