@@ -28,14 +28,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".MainActivity"
+            android:name=".recuperar_contrasenia"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Taxiapp.NoActionBar">
 
         </activity>
+
+
     </application>
 
 </manifest>
