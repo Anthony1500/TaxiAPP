@@ -50,6 +50,14 @@
             android:theme="@style/Theme.Taxiapp.NoActionBar">
 
         </activity>
+
+        <service
+            android:name=".MyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
