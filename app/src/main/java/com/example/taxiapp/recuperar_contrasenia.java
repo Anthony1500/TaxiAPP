@@ -25,6 +25,7 @@ import org.json.JSONObject;
 public class recuperar_contrasenia extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
     Button  botonverificar;
     EditText cajacorreo;
+    TextView textocorrecto;
     RequestQueue rq;//Definimos variables a utilizar
     JsonRequest jrq;
     ProgressDialog progressDialog;
@@ -32,6 +33,7 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recuperar_contrasenia);
+        textocorrecto=(TextView) findViewById(R.id.text_correcto);
         cajacorreo=(EditText) findViewById(R.id.text_correo);
         rq = Volley.newRequestQueue(recuperar_contrasenia.this);
         botonverificar=(Button) findViewById(R.id.btn_correo);
@@ -42,11 +44,11 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
                 String caja1 = cajacorreo.getText().toString();
                 if(!caja1.isEmpty() )
                 {
-                    progressDialog = new ProgressDialog(recuperar_contrasenia.this, R.style.MyAlertDialogStyle);
-
+                    progressDialog = new ProgressDialog(recuperar_contrasenia.this,R.style.MyAlertDialogStyle);
                     progressDialog.setMessage("Por favor espera...");
                     progressDialog.setCancelable(false);//Método del Progress Dialog
                     progressDialog.show();
+                    textocorrecto.setText(cajacorreo.getText().toString());
                     comprovar();
                 }
                 else{
@@ -70,8 +72,9 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
 
     private void comprovar(){
 
-        String urls="http://apptaxi.lovestoblog.com/comprobar.php?correo="+cajacorreo.getText().toString();
+        String urls="https://apptaxi.lovestoblog.com/comprobar.php?correo="+cajacorreo.getText().toString();
         jrq= new JsonObjectRequest(Request.Method.GET,urls,null,this,this);
         rq.add(jrq);//Envió y recepción de datos
     }
+
 }

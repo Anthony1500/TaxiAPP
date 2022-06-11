@@ -20,4 +20,14 @@
         android:name="com.example.taxiapp.recuperar_contrasenia"
         android:label="recuperar_contrasenia"
         tools:layout="@layout/recuperar_contrasenia" />
+    <activity
+        android:id="@+id/registro_usuario2"
+        android:name="com.example.taxiapp.registro_usuario"
+        android:label="registro_usuario"
+        tools:layout="@layout/registro_usuario" />
+    <activity
+        android:id="@+id/login2"
+        android:name="com.example.taxiapp.login"
+        android:label="login"
+        tools:layout="@layout/login" />
 </navigation>
