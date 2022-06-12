@@ -1,14 +1,14 @@
 package com.example.taxiapp;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,8 +18,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class recuperar_contrasenia extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
@@ -72,7 +70,7 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
 
     private void comprovar(){
 
-        String urls="https://apptaxi.lovestoblog.com/comprobar.php?correo="+cajacorreo.getText().toString();
+        String urls="https://parseapi.back4app.com/comprobar.php?correo="+cajacorreo.getText().toString();
         jrq= new JsonObjectRequest(Request.Method.GET,urls,null,this,this);
         rq.add(jrq);//Envió y recepción de datos
     }
