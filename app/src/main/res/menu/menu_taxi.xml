@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/menu_inicio"
+    android:title="Inicio"
+    android:icon="@drawable/ic_baseline_home_24"/>
+    <item android:id="@+id/menu_informacion"
+        android:title="Informacion"
+        android:icon="@drawable/ic_baseline_insert_drive_file_24"/>
+    <item android:id="@+id/menu_configuracion"
+        android:title="Configuracion"
+        android:icon="@drawable/ic_baseline_construction_24"/>
+    <item android:id="@+id/menu_ayuda"
+        android:title="Ayuda"
+        android:icon="@drawable/ic_baseline_help_24"/>
+    <item android:id="@+id/menu_condiciones"
+        android:title="Terminos y Condiciones"
+        android:icon="@drawable/ic_baseline_info_24"/>
+</menu>

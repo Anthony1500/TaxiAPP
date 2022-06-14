@@ -7,20 +7,31 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class login extends AppCompatActivity {
+    Button  menu;
+    Button  boton_recuperar;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-      Button  boton_recuperarcontrasenia = (Button) findViewById(R.id.btn_recuperarcontrasena);
-        boton_recuperarcontrasenia.setOnClickListener(new View.OnClickListener() {
+        menu=(Button)findViewById(R.id.bt_login);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MainActivityTaxiMenu.class);
+                startActivity(i);
+            }
+        });
+        boton_recuperar= (Button) findViewById(R.id.btn_recuperarcontrasena);
+        boton_recuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(v.getContext(), recuperar_contrasenia.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//Envió hacia otro Activity
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+              //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//Envió hacia otro Activity
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                startActivityForResult(intent, 0);
+                //startActivityForResult(intent, 0);
             }
         });
     }
