@@ -7,6 +7,23 @@
     tools:context=".recuperar_contrasenia">
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#014C4C"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="PANTALLA DE RECUPERACIÓN"
+        android:textColor="@color/white"
+        android:translationY="20dp" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -49,7 +66,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="92dp"
             android:background="@drawable/cornerradius_boton"
-            android:backgroundTint="@color/colorInstrucciones"
+            android:backgroundTint="@color/colorGris"
             android:contextClickable="false"
             android:gravity="center"
             android:isScrollContainer="false"
@@ -91,6 +108,21 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/atras"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/back4app_server_url"
+        android:cursorVisible="false"
+        android:hapticFeedbackEnabled="false"
+        android:isScrollContainer="false"
+        android:textColorLink="@color/common_google_signin_btn_text_dark_default"
+        app:backgroundTint="@color/common_google_signin_btn_tint"
+        app:icon="?attr/actionModeCloseDrawable"
+        app:iconSize="27dp"
+        app:iconTintMode="multiply"
+        tools:ignore="@tools:sample/full_names" />
 
 
 </FrameLayout>

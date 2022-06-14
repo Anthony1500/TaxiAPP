@@ -49,7 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="236dp"
         android:ems="10"
+        android:hint="Usuario"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,65 +61,86 @@
         android:id="@+id/editTextTextPassword"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
         android:ems="10"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Botón de recuperación de credenciales -->
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="312dp"
         android:foregroundTint="#9C27B0"
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:text="Contraseña"
         android:textColor="@color/colorBlanco"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="216dp"
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:text="Usuario"
         android:textColor="@color/colorBlanco"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_recuperarcontrasena"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="351dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="456dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="¿Ha olvidado su contraseña?"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlanco"
+        app:backgroundTint="@color/cardview_shadow_end_color"
+        app:iconTint="@color/cardview_shadow_end_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+        app:rippleColor="@color/cardview_shadow_end_color" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="236dp"
-        android:text="Has olvidadado tu Contraseña?"
-        android:textColor="@color/colorBlanco"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="204dp"
+    <Button
+        android:id="@+id/btn_registro"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="351dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="504dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
         android:text="Create una Cuenta"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/colorBlanco"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@color/cardview_shadow_end_color"
+        app:iconTint="@color/cardview_shadow_end_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/cardview_shadow_end_color" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
