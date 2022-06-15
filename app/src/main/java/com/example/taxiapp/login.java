@@ -18,7 +18,7 @@ public class login extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainActivityTaxiMenu.class);
+                Intent i = new Intent(getApplicationContext(),Login_Splash_Screen.class);
                 startActivity(i);
             }
         });

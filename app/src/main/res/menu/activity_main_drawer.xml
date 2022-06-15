@@ -6,19 +6,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Inicio" />
         <item
         android:id="@+id/nav_informacion"
         android:icon="@drawable/ic_baseline_insert_drive_file_24"
         android:title="@string/menu_informacion" />
+
+        <item
+            android:id="@+id/nav_ayuda"
+            android:icon="@drawable/ic_baseline_help_24"
+            android:title="Ayuda" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_baseline_construction_24"
+            android:title="Configuracion" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="Terminos Y Condiciones " />
     </group>
 </menu>
