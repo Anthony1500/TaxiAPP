@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class login extends AppCompatActivity {
     Button  menu;
-    Button  boton_recuperar;
+    Button  boton_recuperar,boton_registro;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -23,15 +23,27 @@ public class login extends AppCompatActivity {
             }
         });
         boton_recuperar= (Button) findViewById(R.id.btn_recuperarcontrasena);
+        boton_registro= (Button) findViewById(R.id.btn_registro);
         boton_recuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(v.getContext(), recuperar_contrasenia.class);
-              //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//Envió hacia otro Activity
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//Envió hacia otro Activity
+               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                //startActivityForResult(intent, 0);
+               startActivityForResult(intent, 0);
+            }
+        });
+        boton_registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), registro_usuario.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//Envió hacia otro Activity
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
     }
