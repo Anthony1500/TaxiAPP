@@ -26,7 +26,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
@@ -47,33 +46,35 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class recuperar_contrasenia extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
-    Button  botonverificar,botonatras;
+    Button botonverificar, botonatras, botonenviar;
     EditText cajacorreo;
-    TextView textocorrecto,textoincorrecto;
-    String correo,usuario,contrasenia,id_usuario;
-    RequestQueue rq;//Definimos variables a utilizar
+    TextView textocorrecto, textoincorrecto;
+    String correo, usuario, contrasenia, id_usuario;
+    RequestQueue rq, rq2;//Definimos variables a utilizar
     JsonRequest jrq;
-
     Session session;
+
 
     ProgressDialog progressDialog;
     String url;
     Handler handler = new Handler();
     public static int esperar = 5000;
     //********************************************************************
-    String correoelectronico="corpcosechapp@gmail.com";
-    String contraseña="ieijrakhyikvfpjn";
+    String correoelectronico = "corpcosechapp@gmail.com";
+    String contraseña = "yxitteyiyymwrvur";
+
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recuperar_contrasenia);
-        textocorrecto=(TextView) findViewById(R.id.text_correcto);
-        textoincorrecto=(TextView) findViewById(R.id.text_error);
-        cajacorreo=(EditText) findViewById(R.id.text_correo);
+        textocorrecto = (TextView) findViewById(R.id.text_correcto);
+        textoincorrecto = (TextView) findViewById(R.id.text_error);
+        cajacorreo = (EditText) findViewById(R.id.text_correo);
         rq = Volley.newRequestQueue(recuperar_contrasenia.this);
-        botonverificar=(Button) findViewById(R.id.btn_correo);
-        botonatras=(Button) findViewById(R.id.atras);
+        botonverificar = (Button) findViewById(R.id.btn_correo);
+
+        botonatras = (Button) findViewById(R.id.atras);
 
         botonverificar.setOnClickListener(new View.OnClickListener() {//Método para darle función al botón
 
@@ -81,20 +82,20 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
             public void onClick(View v) {
                 String caja1 = cajacorreo.getText().toString();
 
-                    if (!caja1.isEmpty()) {
-                        if (!validarEmail(caja1)){
-                            cajacorreo.setError("Correo no válido");
-                        }else {
-                            progressDialog = new ProgressDialog(recuperar_contrasenia.this, R.style.MyAlertDialogStyle);
-                            progressDialog.setMessage("Por favor espera...");
-                            progressDialog.setCancelable(false);//Método del Progress Dialog
-                            progressDialog.show();
-
-                            comprovar();
-                        }
+                if (!caja1.isEmpty()) {
+                    if (!validarEmail(caja1)) {
+                        cajacorreo.setError("Correo no válido");
                     } else {
-                        cajacorreo.setError("Favor de escribir algo");
+                        progressDialog = new ProgressDialog(recuperar_contrasenia.this, R.style.MyAlertDialogStyle);
+                        progressDialog.setMessage("Por favor espera...");
+                        progressDialog.setCancelable(false);//Método del Progress Dialog
+                        progressDialog.show();
+
+                        comprovar();
                     }
+                } else {
+                    cajacorreo.setError("Favor de escribir algo");
+                }
 
             }
         });
@@ -106,17 +107,16 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//Envió hacia otro Activity
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                Toast.makeText(recuperar_contrasenia.this,"Volvió al inicio de sesión." ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(recuperar_contrasenia.this, "Volvió al inicio de sesión.", Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
         progressDialog.dismiss();
-        Toast.makeText(this,"Error" ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         textoincorrecto.setText("El correo ingresado no está registrado.");
         textocorrecto.setText("");
     }
@@ -124,72 +124,42 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
     @Override
     public void onResponse(JSONObject response) {
 
-        Toast.makeText(this,"Exito." ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Exito.", Toast.LENGTH_SHORT).show();
         textocorrecto.setText("Éxito");
         textoincorrecto.setText("");
         progressDialog.dismiss();
         //********************************************************************
+
         JSONArray jsonArray = response.optJSONArray("probar");
-        JSONObject jsonObject= null;
+        JSONObject jsonObject = null;
         try {
             jsonObject = jsonArray.getJSONObject(0);
-            id_usuario =jsonObject.optString("id_usuario");//Obtención del id
-            url = "https://apps.indoamerica.edu.ec/catastros/apptaxi/selectusuarios.php?id_usuario=" +id_usuario;
+            id_usuario = jsonObject.optString("id_usuario");//Obtención del id
+            usuario = jsonObject.optString("usuario");
+            contrasenia = jsonObject.optString("contrasenia");
+            correo = jsonObject.optString("correo");
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         //********************************************************************
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-
-
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-
-                        jsonObject = response.getJSONObject(i);
-                        correo= jsonObject.getString("correo");
-                        usuario = jsonObject.getString("usuario");
-                        contrasenia = jsonObject.getString("contrasenia");
-
-
-
-
-                    } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error de Conexión", Toast.LENGTH_SHORT).show();
-            }
-        }
-        );
-
-        rq = Volley.newRequestQueue(this);
-        rq.add(jsonArrayRequest);
-
-
-       enviar_email();
-
+enviarcorreo();
 
     }
+
     private boolean validarEmail(String email) {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
-    private void comprovar(){
 
-        String urls="https://apps.indoamerica.edu.ec/catastros/apptaxi/comprobar.php?correo="+cajacorreo.getText().toString();
-        jrq= new JsonObjectRequest(Request.Method.GET,urls,null,this,this);
+    private void comprovar() {
+
+        String urls = "https://apps.indoamerica.edu.ec/catastros/apptaxi/comprobar.php?correo=" + cajacorreo.getText().toString();
+        jrq = new JsonObjectRequest(Request.Method.GET, urls, null, this, this);
         rq.add(jrq);//Envió y recepción de datos
     }
-    public void enviar_email() {
+
+    private void enviarcorreo() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Properties properties = new Properties();
@@ -198,17 +168,16 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.port", "465");
-        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
         try {
             session = javax.mail.Session.getDefaultInstance(properties, new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(correoelectronico,contraseña);
+                    return new PasswordAuthentication(correoelectronico, contraseña);
                 }
             });
 
-            Toast.makeText(this,session.toString(),Toast.LENGTH_SHORT).show();
 
             if (session != null) {
                 setProgressDialog();
@@ -216,12 +185,11 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
                 message.setFrom(new InternetAddress(correoelectronico));
                 message.setSubject("Consulta de Datos");
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(cajacorreo.getText().toString()));
-                message.setContent("<center><h2>Credenciales de Acceso</h2></center><br>" + "<center><img  src=\"https://apps.indoamerica.edu.ec/catastros/cosecha/img/cosecha.png\"></center>" + "<center>" +usuario.toUpperCase() + "<br>" + "</center>" + "<br>" + "Email : "
-                        + correo + "<br>" + "Contraseña:" + contrasenia + "<center><p>Recuerda no compartir esta información. </p></center>", "text/html; charset=utf-8");
+                message.setContent("<center><h2>Credenciales de Acceso</h2></center><br>" + "<center><img  src=\"https://apps.indoamerica.edu.ec/catastros/cosecha/img/cosecha.png\"></center>" + "<center>" + usuario.toUpperCase() + "<br>" + "</center>" + "<br>" + "Email : "
+                        + correo + "<br>" + "Contraseña:" + contrasenia + "<br>" + "Privilegio:" + correo + "<center><p>Recuerda no compartir esta información. </p></center>", "text/html; charset=utf-8");
 
                 Transport.send(message);
                 setProgressDialog();
-
             }
 
         } catch (Exception e) {
@@ -232,13 +200,14 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
             public void run() {
                 Intent intent = new Intent(recuperar_contrasenia.this, login.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(),"Se ha enviado las credenciales al correo.",Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),"Revisa tu correo.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Se ha enviado las credenciales al correo.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Revisa tu correo.", Toast.LENGTH_SHORT).show();
 
 
             }
         }, 3000);
     }
+
     public void setProgressDialog() {
 
         int llPadding = 20;
@@ -258,7 +227,7 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
         progressBar.setPadding(0, 0, llPadding, 0);
         progressBar.setLayoutParams(llParam);
 
-        progressBar.setDrawingCacheBackgroundColor(Color.rgb(248,99,0));
+        progressBar.setDrawingCacheBackgroundColor(Color.rgb(248, 99, 0));
 
 
         llParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -300,6 +269,6 @@ public class recuperar_contrasenia extends AppCompatActivity implements Response
 
         }
 
-    }
 
+    }
 }
