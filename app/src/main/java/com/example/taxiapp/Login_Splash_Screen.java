@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Login_Splash_Screen extends AppCompatActivity {
-    private final int DURACION_SPLASH =4000;// tiempo de espera
+    private final int DURACION_SPLASH =2500;// tiempo de espera
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

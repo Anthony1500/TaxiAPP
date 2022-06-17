@@ -4,25 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/degradado"
+    android:background="@drawable/nuevo"
     >
 
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView_login"
-        android:layout_width="wrap_content"
-        android:layout_height="142dp"
+        android:layout_width="198dp"
+        android:layout_height="92dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="75dp"
-        android:layout_marginEnd="66dp"
-        android:layout_marginBottom="122dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="378dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/taxi02"
-        />
-
+        app:lottie_rawRes="@raw/flecha" />
 
 
 </RelativeLayout>
