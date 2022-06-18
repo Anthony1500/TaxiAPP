@@ -95,7 +95,7 @@
             android:translationX="15dp" />
 
         <EditText
-            android:id="@+id/editarinvernadero"
+            android:id="@+id/usuario_registro"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
@@ -116,7 +116,7 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/editTextTextPassword3"
+                android:id="@+id/contrasenia1"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="96dp"
@@ -137,7 +137,7 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/editTextTextPassword2"
+                android:id="@+id/contrasenia2"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="96dp"
@@ -149,7 +149,7 @@
                 android:padding="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
          <EditText
-            android:id="@+id/editarinvernadero4"
+            android:id="@+id/correo_registro"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="380dp"
@@ -162,14 +162,14 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
-            android:id="@+id/editarinvernadero5"
+            android:id="@+id/telefono"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="476dp"
             android:background="@drawable/border_botton_top"
             android:ems="10"
             android:hint="Teléfono"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
             android:padding="15dp"
             android:translationX="15dp"
             tools:ignore="SpeakableTextPresentCheck" />
