@@ -32,7 +32,8 @@ public class registro_usuario extends AppCompatActivity implements Response.List
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_usuario);
-        botonatras = (Button) findViewById(R.id.rbtn_registroatras);
+
+        botonatras = (Button) findViewById(R.id.btn_registroatras);
         botonregistro = (Button) findViewById(R.id.btn_registrarse);
         usuario = (EditText) findViewById(R.id.usuario_registro);
         contraseña = (EditText) findViewById(R.id.contrasenia1);
@@ -90,6 +91,11 @@ public class registro_usuario extends AppCompatActivity implements Response.List
     public void onResponse(JSONObject response) {
         progressDialog.dismiss();
         Toast.makeText(registro_usuario.this,"Exito al registrase",Toast.LENGTH_SHORT).show();
+        usuario.setText("");
+        contraseña.setText("");
+        contraseña2.setText("");
+        correos.setText("");
+        telefono.setText("");
 
     }
 

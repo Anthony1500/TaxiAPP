@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registro_usuario"
-    >
+    tools:context=".registro_usuario">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -25,7 +24,7 @@
         android:translationY="20dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/rbtn_registroatras"
+        android:id="@+id/btn_registroatras"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -176,7 +175,6 @@
 
         <Button
             android:id="@+id/btn_registrarse"
-
             android:layout_width="240dp"
             android:layout_height="58dp"
             android:layout_gravity="center|center_horizontal|center_vertical"

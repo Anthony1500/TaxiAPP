@@ -19,7 +19,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +35,7 @@ public class login extends AppCompatActivity {
         u_correo = findViewById(R.id.email);
         u_con = findViewById(R.id.contraseña);
         boton_recuperar=(Button)findViewById(R.id.btn_recuperarcontrasena);
+        boton_registro=(Button)findViewById(R.id.btn_registro);
         boton_recuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class login extends AppCompatActivity {
 
             }
         });
-        boton_registro=(Button)findViewById(R.id.btn_registro);
+
         boton_registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
