@@ -19,6 +19,7 @@
         android:backgroundTint="@color/colorGris"
         android:contextClickable="false"
         android:gravity="center"
+        android:onClick="login"
         android:isScrollContainer="false"
         android:text="Iniciar Sesion "
         android:textAlignment="center"
@@ -44,8 +45,7 @@
         tools:layout_editor_absoluteY="-12dp" />
 
     <EditText
-        android:textColor="@color/white"
-        android:id="@+id/correo"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/border_top"
@@ -76,16 +76,16 @@
 
         <!--Campo Contraseña -->
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/contraseña"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/border_botton"
             android:ems="10"
-            android:textColor="@color/colorBlanco"
             android:enabled="true"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:padding="15dp"
+            android:textColor="@color/colorBlanco"
 
             app:passwordToggleEnabled="true"
             tools:ignore="SpeakableTextPresentCheck" />

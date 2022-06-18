@@ -25,13 +25,15 @@
         <entry key="..\:/Searches/taxiapp/app/src/main/res/menu/menu_main.xml" value="0.25" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/drawable/degradado.xml" value="0.1385" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/fragment_ayuda.xml" value="0.1675929884566054" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/fragment_gallery.xml" value="0.1" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/fragment_informacion.xml" value="0.1" />
-        <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/login.xml" value="0.1015625" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/fragment_second.xml" value="0.1675929884566054" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/login.xml" value="0.18" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/login_splash_screen.xml" value="0.1" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/recuperar_contrasenia.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP_A/app/src/main/res/layout/splash_screen.xml" value="0.1482320942883046" />
