@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_baseline_home_24"
             android:title="Inicio" />
         <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_baseline_map_24"
+            android:title="Maps" />
+        <item
         android:id="@+id/nav_informacion"
         android:icon="@drawable/ic_baseline_insert_drive_file_24"
         android:title="@string/menu_informacion" />

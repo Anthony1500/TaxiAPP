@@ -39,7 +39,7 @@ public class MainActivityTaxiMenu extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_ayuda,
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_maps,R.id.nav_ayuda,
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_informacion)
                 .setOpenableLayout(drawer)
                 .build();
