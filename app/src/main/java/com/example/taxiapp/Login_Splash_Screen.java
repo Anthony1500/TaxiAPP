@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Login_Splash_Screen extends AppCompatActivity {
     private final int DURACION_SPLASH =2500;// tiempo de espera
+    String info,enviar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,12 @@ public class Login_Splash_Screen extends AppCompatActivity {
             @Override
             public void run() {// metodo para pasar de una pantalla a otra
                 Intent intent = new Intent(Login_Splash_Screen.this,MainActivityTaxiMenu.class);
+                Bundle datr = getIntent().getExtras();
+                Bundle enviar= new Bundle();
+                info = datr.getString("datos");
+                enviar.putString("datos",  info);
+                intent.putExtras(enviar);
+
                 startActivity(intent);
                 finish();
             };

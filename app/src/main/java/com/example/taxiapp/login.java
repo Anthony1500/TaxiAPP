@@ -29,6 +29,8 @@ public class login extends AppCompatActivity {
     EditText u_correo ,u_con;
     String s_correo,s_con;
     String url="https://apps.indoamerica.edu.ec/catastros/apptaxi/usuarios.php";
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -80,7 +82,13 @@ if(u_correo.getText().toString().equals("")){
             if (response.equalsIgnoreCase("ingreso correcto")) {
                 u_correo.setText("");
                 u_con.setText("");
-                startActivity(new Intent(getApplicationContext(), Login_Splash_Screen.class));
+                Bundle enviar= new Bundle();
+                enviar.putString("datos",  s_correo);
+                Intent intent = new Intent(login.this, Login_Splash_Screen.class);
+                intent.putExtras(enviar);
+                startActivity(intent);
+
+
             } else {
                 Toast.makeText(login.this, response, Toast.LENGTH_SHORT).show();
             }

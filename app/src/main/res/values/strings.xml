@@ -28,5 +28,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_informacion">Informacion</string>
+    <string name="title_activity_ejempo2">ejempo2</string>
 
 </resources>
