@@ -59,26 +59,37 @@ public class registro_usuario extends AppCompatActivity implements Response.List
                 String caja3 = contraseña2.getText().toString();
                 String caja4 = correos.getText().toString();
                 String caja5 = telefono.getText().toString();
-                if (!caja1.isEmpty()) {
-                    if (!validarEmail(caja4) ) {
-                        correos.setError("Correo no válido");
-                    } else {
-                        progressDialog = new ProgressDialog(registro_usuario.this, R.style.MyAlertDialogStyle);
-                        progressDialog.setMessage("Por favor espera...");
-                        progressDialog.setCancelable(false);//Método del Progress Dialog
-                        progressDialog.show();
-
-                        registrase();
-                    }
+                progressDialog = new ProgressDialog(registro_usuario.this, R.style.MyAlertDialogStyle);
+                progressDialog.setCancelable(false);//Método del Progress Dialog para que no se pueda cancelar
+                if (caja1.isEmpty() || caja2.isEmpty() || caja3.isEmpty() || caja4.isEmpty() || caja5.isEmpty()) {
+                    Toast.makeText(registro_usuario.this, "Todos los campos son obligatorios.", Toast.LENGTH_SHORT).show();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(caja4).matches()) {
+                    Toast.makeText(registro_usuario.this, "El correo no es válido.", Toast.LENGTH_SHORT).show();
+                } else if (caja2.length() < 6) {
+                    Toast.makeText(registro_usuario.this, "La contraseña debe tener al menos 6 caracteres.", Toast.LENGTH_SHORT).show();
+                } else if (!caja2.equals(caja3)) {
+                    Toast.makeText(registro_usuario.this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show();
+                } else if (caja5.length() < 10) {
+                    Toast.makeText(registro_usuario.this, "El teléfono debe tener al menos 10 dígitos.", Toast.LENGTH_SHORT).show();
                 } else {
-                    usuario.setError("Favor de escribir algo");
-                    contraseña.setError("Favor de escribir algo");
-                    contraseña2.setError("Favor de escribir algo");
-                    correos.setError("Favor de escribir algo");
-                    telefono.setError("Favor de escribir algo");
+                    progressDialog.setMessage("Registrando usuario...");
+                    progressDialog.show();
+                    registrase();
+
+
                 }
+
+
+
+
+
+
+
+
+
             }
         });
+
 
     }
     @Override
@@ -111,4 +122,5 @@ public class registro_usuario extends AppCompatActivity implements Response.List
         jrq= new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         rq.add(jrq);//Envió y recepción de datos
     }
+
 }

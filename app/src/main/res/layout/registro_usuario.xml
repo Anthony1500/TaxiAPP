@@ -28,15 +28,14 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/back4app_server_url"
+        android:contentDescription="@string/app_name"
         android:cursorVisible="false"
         android:hapticFeedbackEnabled="false"
         android:isScrollContainer="false"
-        android:textColorLink="@color/common_google_signin_btn_text_dark_default"
-        app:backgroundTint="@color/common_google_signin_btn_tint"
         app:icon="?attr/actionModeCloseDrawable"
+        app:iconGravity="textStart"
         app:iconSize="27dp"
-
+        app:iconTint="@null"
         tools:ignore="@tools:sample/full_names" />
 
     <FrameLayout
@@ -51,37 +50,7 @@
             android:text="Usuario."
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:translationX="15dp" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="252dp"
-            android:text="Confirmar Contraseña."
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:translationX="15dp" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="348dp"
-            android:text="Correo"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:translationX="15dp" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="444dp"
-            android:text="Teléfono"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:translationX="15dp" />
+            android:translationX="50dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -91,25 +60,60 @@
             android:text="Contraseña."
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:translationX="15dp" />
+            android:translationX="50dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="252dp"
+            android:text="Confirmar Contraseña."
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:translationX="50dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="348dp"
+            android:text="Correo"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:translationX="50dp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="444dp"
+            android:text="Teléfono"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:translationX="50dp" />
 
         <EditText
             android:id="@+id/usuario_registro"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="96dp"
             android:background="@drawable/border_botton_top"
             android:ems="10"
+            android:foregroundGravity="fill_horizontal|top"
+            android:gravity="fill_vertical"
             android:hint="Usuario"
-
             android:inputType="text"
+
             android:padding="15dp"
-            android:translationX="15dp" />
+            android:translationX="50dp" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
 
-            android:translationX="15dp"
+            android:foregroundGravity="left|bottom"
+            android:translationX="50dp"
             android:translationY="187dp"
             app:hintEnabled="false"
             app:passwordToggleEnabled="true">
@@ -126,14 +130,17 @@
                 android:inputType="textPassword"
                 android:padding="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
 
-            android:translationX="15dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationX="50dp"
+
             android:translationY="280dp"
+            app:boxStrokeColor="@color/colorRojo"
             app:hintEnabled="false"
             app:passwordToggleEnabled="true">
+
 
             <EditText
                 android:id="@+id/contrasenia2"
@@ -143,11 +150,14 @@
                 android:layout_weight="1"
                 android:background="@drawable/border_botton_top"
                 android:ems="10"
+                android:gravity="clip_horizontal"
                 android:hint=" Repita la contraseña"
                 android:inputType="textPassword"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:textColor="@color/colorRojo" />
         </com.google.android.material.textfield.TextInputLayout>
-         <EditText
+
+        <EditText
             android:id="@+id/correo_registro"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -157,7 +167,7 @@
             android:hint="Correo"
             android:inputType="textEmailAddress"
             android:padding="15dp"
-            android:translationX="15dp"
+            android:translationX="50dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
@@ -170,10 +180,12 @@
             android:hint="Teléfono"
             android:inputType="number"
             android:padding="15dp"
-            android:translationX="15dp"
+            android:translationX="50dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
+
         <Button
+
             android:id="@+id/btn_registrarse"
             android:layout_width="240dp"
             android:layout_height="58dp"
@@ -181,35 +193,29 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="624dp"
             android:layout_marginEnd="70dp"
-            android:autoText="false"
-            android:background="@drawable/cornerradius_boton"
-            android:backgroundTint="@color/colorGris"
+             android:backgroundTint="@color/colorGris"
+             android:backgroundTintMode="src_in"
             android:contextClickable="false"
-
-
             android:foregroundGravity="center_vertical|center"
             android:gravity="center|center_horizontal|center_vertical"
+            android:hapticFeedbackEnabled="false"
             android:inputType="textPhonetic"
             android:isScrollContainer="false"
+            android:scrollbarStyle="outsideInset"
             android:text="REGISTRASE"
-
-            android:textAllCaps="true"
-            android:textColor="@color/colorBlanco"
             android:textDirection="firstStrong"
             android:textIsSelectable="false"
             android:textSize="16sp"
-            android:translationX="-23dp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            android:translationX="-1dp"
             android:translationY="-350dp"
-            tools:text="REGISTRASE" />
+            app:icon="@drawable/send"
+            app:iconPadding="-10dp" />
+
 
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="52dp"
-        android:layout_height="53dp"
-        android:translationX="80dp"
-        android:translationY="579dp"
-        app:srcCompat="@drawable/send" />
+
 
 </FrameLayout>
