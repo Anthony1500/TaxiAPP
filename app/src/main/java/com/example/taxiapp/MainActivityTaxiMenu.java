@@ -1,11 +1,11 @@
 package com.example.taxiapp;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,15 +29,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import okio.GzipSink;
-
 public class MainActivityTaxiMenu extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainTaxiMenuBinding binding;
     TextView datos,datos1;
     String info;
-
+ImageView imagen;
     RequestQueue rq;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +53,7 @@ public class MainActivityTaxiMenu extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMainActivityTaxiMenu.toolbar);
+
         binding.appBarMainActivityTaxiMenu.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +61,8 @@ public class MainActivityTaxiMenu extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -74,7 +75,7 @@ public class MainActivityTaxiMenu extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         View headerView = navigationView.getHeaderView(0);
-
+        imagen = (ImageView) headerView.findViewById(R.id.fotousuario);
         TextView navnombre = (TextView) headerView.findViewById(R.id.nombre);
         TextView navcorreo = (TextView) headerView.findViewById(R.id.correo);
 
@@ -106,6 +107,23 @@ public class MainActivityTaxiMenu extends AppCompatActivity {
         );
         rq= Volley.newRequestQueue(this);
         rq.add(jsonArrayRequest);
+
+
+imagen.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(MainActivityTaxiMenu.this, subir_foto.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//Envió hacia otro Activity
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Bundle enviar= new Bundle();
+        enviar.putString("datos",  info);
+        intent.putExtras(enviar);
+        startActivity(intent);
+        startActivityForResult(intent, 0);
+    }
+});
+
+
     }
 
     @Override

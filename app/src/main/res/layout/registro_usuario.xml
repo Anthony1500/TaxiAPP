@@ -34,7 +34,7 @@
         android:isScrollContainer="false"
         app:icon="?attr/actionModeCloseDrawable"
         app:iconGravity="textStart"
-        app:iconSize="27dp"
+        app:iconSize="29dp"
         app:iconTint="@null"
         tools:ignore="@tools:sample/full_names" />
 

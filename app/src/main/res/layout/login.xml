@@ -36,7 +36,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/fotousuario"
         android:layout_width="216dp"
         android:layout_height="202dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/fotousuario"
         app:layout_constraintVertical_bias="0.293" />
 
     <com.google.android.material.textfield.TextInputLayout
