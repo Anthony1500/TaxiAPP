@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -37,11 +38,13 @@ public class subir_foto extends AppCompatActivity {
     ImageView imagen;
     TextView nombre;
     RequestQueue rq;
-    Button cargar_imagen,botonatras;
+    String id_usuario;
+    Button cargar_imagen,botonatras, botonguardar;
     private int PICK_IMAGE_REQUEST = 1;
     private Bitmap bitmap;
     private String UPLOAD_URL ="https://apps.indoamerica.edu.ec/catastros/apptaxi/subirfoto.php";
     private String KEY_IMAGEN = "imagen_usuario";
+    private String KEY_ID = "id_usuario";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subir_foto);
@@ -52,6 +55,13 @@ public class subir_foto extends AppCompatActivity {
         cargar_imagen= (Button) findViewById(R.id.btn_cargarimagen);
         nombre=(TextView) findViewById(R.id.text_nombreusuario);
         botonatras = (Button) findViewById(R.id.btn_perfilatras);
+        botonguardar = (Button) findViewById(R.id.btn_guardar);
+        botonguardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();
+            }
+        });
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -60,23 +70,24 @@ public class subir_foto extends AppCompatActivity {
                     try {
                         jsonObject = response.getJSONObject(i);
                         nombre.setText(jsonObject.getString("usuario"));
-                    } catch (JSONException e) {
+                        id_usuario=jsonObject.getString("id_usuario");
+        } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         }
         }
         }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error  Conexión", Toast.LENGTH_SHORT).show();
+        @Override
+        public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getApplicationContext(), "Error  Conexión", Toast.LENGTH_SHORT).show();
         }
         }
         );
         rq= Volley.newRequestQueue(this);
         rq.add(jsonArrayRequest);
         cargar_imagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        public void onClick(View v) {
             cargarfoto();
         }
         });
@@ -94,18 +105,26 @@ public class subir_foto extends AppCompatActivity {
     }
     });
     }
-private void cargarfoto(){
+    private void cargarfoto(){
     Intent intent= new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
     intent.setType("image/");
-    startActivityForResult(intent.createChooser(intent,"Seleccione para completar la acción"),10);
-
+    startActivityForResult(intent.createChooser(intent,"Seleccione para completar la acción"),PICK_IMAGE_REQUEST);
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode,data);
-        if(resultCode==RESULT_OK){
+        if(resultCode == RESULT_OK ){
             Uri path=data.getData();
-            imagen.setImageURI(path);
+            try {
+                //Cómo obtener el mapa de bits de la Galería
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+                //Configuración del mapa de bits en ImageView
+                imagen.setImageBitmap(bitmap);
+               // imagen.setImageURI(path);
+
+    }          catch (IOException e) {
+               e.printStackTrace();
+    }
     }
     }
     public String getStringImagen(Bitmap bmp){
@@ -115,8 +134,6 @@ private void cargarfoto(){
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
     }
-
-
     private void uploadImage(){
         //Mostrar el diálogo de progreso
         final ProgressDialog loading = ProgressDialog.show(this,"Subiendo...","Espere por favor...",false,false);
@@ -128,40 +145,34 @@ private void cargarfoto(){
                         loading.dismiss();
                         //Mostrando el mensaje de la respuesta
                         Toast.makeText(subir_foto.this, s , Toast.LENGTH_LONG).show();
-                    }
+                }
                 },
                 new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        //Descartar el diálogo de progreso
-                        loading.dismiss();
-
-                        //Showing toast
-                        Toast.makeText(subir_foto.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+                //Descartar el diálogo de progreso
+                loading.dismiss();
+                //Showing toast
+                Toast.makeText(subir_foto.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                }
                 }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 //Convertir bits a cadena
-                String imagen = getStringImagen(bitmap);
-
-               // https://www.androfast.com/2017/04/como-subir-una-imagen-desde-android-una.html
-
+                String foto = getStringImagen(bitmap);
+                //Obtener el nombre de la imagen
+                String id = id_usuario;
                 //Creación de parámetros
                 Map<String,String> params = new Hashtable<String, String>();
-
                 //Agregando de parámetros
-                params.put(KEY_IMAGEN, imagen);
-
-
+                params.put(KEY_IMAGEN,foto);
+                params.put(KEY_ID,id);
                 //Parámetros de retorno
                 return params;
-            }
+        }
         };
-
         //Creación de una cola de solicitudes
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-
         //Agregar solicitud a la cola
         requestQueue.add(stringRequest);
     }
