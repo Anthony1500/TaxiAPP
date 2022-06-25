@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-inappmessaging-display:20.1.2'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     def lottieVersion = "5.2.0"
     implementation files('libs/mail.jar')
     implementation files('libs/additionnal.jar')
