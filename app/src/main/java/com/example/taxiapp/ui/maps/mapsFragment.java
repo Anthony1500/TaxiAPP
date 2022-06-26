@@ -23,8 +23,7 @@ public class mapsFragment extends Fragment {
         binding = FragmentMapsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        maViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 
