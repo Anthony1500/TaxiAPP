@@ -21,8 +21,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,11 +36,15 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class subir_foto extends AppCompatActivity {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class subir_foto extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
     String info;
-    ImageView imagen;
+    CircleImageView imagen;
     TextView nombre;
     RequestQueue rq;
+
+    JsonRequest jrq;
     String id_usuario;
     Button cargar_imagen,botonatras, botonguardar;
     private int PICK_IMAGE_REQUEST = 1;
@@ -47,11 +54,15 @@ public class subir_foto extends AppCompatActivity {
     private String KEY_ID = "id_usuario";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        rq = Volley.newRequestQueue(subir_foto.this);
         setContentView(R.layout.subir_foto);
         Bundle datr =getIntent().getExtras();
         info = datr.getString("datos");
-        String url="https://apps.indoamerica.edu.ec/catastros/apptaxi/select.php?correo="+info;
-        imagen = (ImageView) findViewById(R.id.usuarioimagen);
+
+        String urls = "https://apps.indoamerica.edu.ec/catastros/apptaxi/selectfotousuario.php?correo="+info;
+        jrq = new JsonObjectRequest(Request.Method.GET, urls, null, this, this);
+        rq.add(jrq);//Envió y recepción de datos
+        imagen = (CircleImageView) findViewById(R.id.usuarioimagen);
         cargar_imagen= (Button) findViewById(R.id.btn_cargarimagen);
         nombre=(TextView) findViewById(R.id.text_nombreusuario);
         botonatras = (Button) findViewById(R.id.btn_perfilatras);
@@ -62,29 +73,7 @@ public class subir_foto extends AppCompatActivity {
                 uploadImage();
             }
         });
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        nombre.setText(jsonObject.getString("usuario"));
-                        id_usuario=jsonObject.getString("id_usuario");
-        } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        }
-        }
-        }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "Error  Conexión", Toast.LENGTH_SHORT).show();
-        }
-        }
-        );
-        rq= Volley.newRequestQueue(this);
-        rq.add(jsonArrayRequest);
+
         cargar_imagen.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -176,4 +165,38 @@ public class subir_foto extends AppCompatActivity {
         //Agregar solicitud a la cola
         requestQueue.add(stringRequest);
     }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+
     }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        usuario usuariofoto = new usuario();
+        JSONArray jsonArray = response.optJSONArray("probar");
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = jsonArray.getJSONObject(0);
+            usuariofoto.setDato(jsonObject.optString("imagen_usuario"));
+            id_usuario = jsonObject.optString("id_usuario");//Obtención del id
+            nombre.setText(jsonObject.optString("usuario"));
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //no funciona decoddificacion en base 64
+        Glide.with(subir_foto.this)
+                .load(jsonObject.optString("imagen_usuario"))
+                .into(imagen);
+        if(usuariofoto.getUsuariofoto()!=null) {
+            Toast.makeText(subir_foto.this, "exito", Toast.LENGTH_LONG).show();
+
+            imagen.setImageBitmap(usuariofoto.getUsuariofoto());
+        }else{
+            Toast.makeText(subir_foto.this, "fallido", Toast.LENGTH_LONG).show();
+            imagen.setImageResource(R.drawable.sin_imagen);
+        }
+    }
+}

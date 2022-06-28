@@ -64,12 +64,9 @@
         android:id="@+id/btn_cargarimagen"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="125dp"
         android:layout_marginTop="232dp"
-        android:layout_marginEnd="126dp"
         android:text="Cargar imagen"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,12 +111,12 @@
         android:id="@+id/btn_guardar"
         android:layout_width="163dp"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="@color/colorVerde"
-        android:foregroundGravity="center_vertical"
         android:text="Guardar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_cargarimagen"
         app:layout_constraintTop_toBottomOf="@+id/btn_cargarimagen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

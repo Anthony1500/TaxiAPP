@@ -2,7 +2,10 @@ package com.example.taxiapp;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.provider.MediaStore;
 import android.util.Base64;
+
+import java.io.ByteArrayOutputStream;
 
 public class usuario {
 
@@ -17,7 +20,7 @@ public class usuario {
     public void setDato(String dato) {
         this.dato = dato;
         try {
-            byte[] bytecode= Base64.decode(dato,Base64.DEFAULT);
+            byte[] bytecode= Base64.decode(dato, Base64.DEFAULT);
             this.usuariofoto= BitmapFactory.decodeByteArray(bytecode,0,bytecode.length);
         }catch (Exception e){
             e.printStackTrace();
