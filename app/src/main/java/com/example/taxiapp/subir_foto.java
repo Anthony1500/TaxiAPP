@@ -40,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class subir_foto extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
     String info;
-    CircleImageView imagen;
+    ImageView imagen;
     TextView nombre;
     RequestQueue rq;
 
@@ -62,7 +62,7 @@ public class subir_foto extends AppCompatActivity implements Response.Listener<J
         String urls = "https://apps.indoamerica.edu.ec/catastros/apptaxi/selectfotousuario.php?correo="+info;
         jrq = new JsonObjectRequest(Request.Method.GET, urls, null, this, this);
         rq.add(jrq);//Envió y recepción de datos
-        imagen = (CircleImageView) findViewById(R.id.usuarioimagen);
+        imagen = (ImageView) findViewById(R.id.usuarioimagen);
         cargar_imagen= (Button) findViewById(R.id.btn_cargarimagen);
         nombre=(TextView) findViewById(R.id.text_nombreusuario);
         botonatras = (Button) findViewById(R.id.btn_perfilatras);
@@ -173,12 +173,12 @@ public class subir_foto extends AppCompatActivity implements Response.Listener<J
 
     @Override
     public void onResponse(JSONObject response) {
-        usuario usuariofoto = new usuario();
+        usuario usufoto = new usuario();
         JSONArray jsonArray = response.optJSONArray("probar");
         JSONObject jsonObject = null;
         try {
             jsonObject = jsonArray.getJSONObject(0);
-            usuariofoto.setDato(jsonObject.optString("imagen_usuario"));
+            usufoto.setDato(jsonObject.optString("imagen_usuario"));
             id_usuario = jsonObject.optString("id_usuario");//Obtención del id
             nombre.setText(jsonObject.optString("usuario"));
 
@@ -187,13 +187,13 @@ public class subir_foto extends AppCompatActivity implements Response.Listener<J
             e.printStackTrace();
         }
         //no funciona decoddificacion en base 64
-        Glide.with(subir_foto.this)
-                .load(jsonObject.optString("imagen_usuario"))
-                .into(imagen);
-        if(usuariofoto.getUsuariofoto()!=null) {
+      //  Glide.with(subir_foto.this)
+             //   .load(jsonObject.optString("imagen_usuario"))
+             //   .into(imagen);
+        if(usufoto.getUsuariofoto()!=null) {
             Toast.makeText(subir_foto.this, "exito", Toast.LENGTH_LONG).show();
 
-            imagen.setImageBitmap(usuariofoto.getUsuariofoto());
+            imagen.setImageBitmap(usufoto.getUsuariofoto());
         }else{
             Toast.makeText(subir_foto.this, "fallido", Toast.LENGTH_LONG).show();
             imagen.setImageResource(R.drawable.sin_imagen);

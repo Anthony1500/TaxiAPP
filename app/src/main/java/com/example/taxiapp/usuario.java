@@ -20,8 +20,8 @@ public class usuario {
     public void setDato(String dato) {
         this.dato = dato;
         try {
-            byte[] bytecode= Base64.decode(dato, Base64.DEFAULT);
-            this.usuariofoto= BitmapFactory.decodeByteArray(bytecode,0,bytecode.length);
+            byte[] byteCode= Base64.decode(dato, Base64.DEFAULT);
+            this.usuariofoto= BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
         }catch (Exception e){
             e.printStackTrace();
         }
