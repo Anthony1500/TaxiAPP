@@ -187,9 +187,9 @@ public class subir_foto extends AppCompatActivity implements Response.Listener<J
             e.printStackTrace();
         }
         //no funciona decoddificacion en base 64
-      //  Glide.with(subir_foto.this)
-             //   .load(jsonObject.optString("imagen_usuario"))
-             //   .into(imagen);
+  // Glide.with(subir_foto.this)
+         //.load(jsonObject.optString("imagen_usuario"))
+            // .into(imagen);
         if(usufoto.getUsuariofoto()!=null) {
             Toast.makeText(subir_foto.this, "exito", Toast.LENGTH_LONG).show();
 
