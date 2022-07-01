@@ -7,19 +7,48 @@
     tools:context=".ui.gallery.GalleryFragment"
     >
 
-    <TextView
-        android:id="@+id/text_gallery"
-        android:textColor="@color/white"
-        android:background="@color/tea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/btn_datos"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:gravity=""
+        android:textSize="20dp"
+        android:text="Mi Cuenta"
+
+        android:textAllCaps="false"
+        android:textColor="@color/colorNegro"
+        app:backgroundTint="@color/cardview_shadow_end_color"
+        app:iconTint="@color/cardview_shadow_end_color"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/cardview_shadow_end_color" />
+
+    <Button
+        android:id="@+id/btn_tema"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="72dp"
+        android:fontFamily="sans-serif"
+        android:gravity=""
+        android:text="Tema"
+        android:textSize="20dp"
+
+        android:textAllCaps="false"
+        android:textColor="@color/colorNegro"
+        app:backgroundTint="@color/cardview_shadow_end_color"
+        app:iconTint="@color/cardview_shadow_end_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/cardview_shadow_end_color" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

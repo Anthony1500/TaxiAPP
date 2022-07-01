@@ -48,8 +48,14 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Taxiapp.NoActionBar" />
+
         <activity
             android:name=".ejemplo"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Taxiapp.NoActionBar" />
+        <activity
+            android:name=".ui.gallery.datos"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Taxiapp.NoActionBar" />
