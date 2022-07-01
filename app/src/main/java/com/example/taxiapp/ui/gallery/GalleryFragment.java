@@ -17,7 +17,7 @@ public class GalleryFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
     private View bindinga;
-    Button  boton_datos;
+    Button  boton_datos,btema;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         GalleryViewModel galleryViewModel =
@@ -28,8 +28,8 @@ public class GalleryFragment extends Fragment {
 
 
 
-        bindinga =inflater.inflate(R.layout.datosusuario, container, false);
-
+        bindinga =inflater.inflate(R.layout.datosusua, container, false);
+        bindinga =inflater.inflate(R.layout.tema, container, false);
         View root = binding.getRoot();
 
         boton_datos=(Button)root.findViewById(R.id.btn_datos);
@@ -40,6 +40,15 @@ public class GalleryFragment extends Fragment {
                 startActivity(i);
             }
         });
+        btema=(Button)root.findViewById(R.id.btn_tema);
+        btema.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), tema.class);
+                startActivity(i);
+            }
+        });
+
 
         return root;
 
@@ -49,9 +58,6 @@ public class GalleryFragment extends Fragment {
 
 
 
-    }
-
-
-
+}
 
 
