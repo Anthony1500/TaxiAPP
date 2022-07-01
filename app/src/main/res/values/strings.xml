@@ -29,5 +29,8 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_informacion">Informacion</string>
     <string name="title_activity_ejempo2">ejempo2</string>
+    <string name="google_maps_key">AIzaSyANaO5itNK94qjGCj9Fv5F_MF1z3PVNBGo</string>
+    <string name="title_activity_maps">maps</string>
+
 
 </resources>
