@@ -22,9 +22,12 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyANaO5itNK94qjGCj9Fv5F_MF1z3PVNBGo" />
+            android:value="${MAPS_API_KEY}" />
 
-
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".Splash_Screen"
             android:exported="true"
