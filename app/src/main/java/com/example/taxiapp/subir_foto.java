@@ -178,7 +178,17 @@ public class subir_foto extends AppCompatActivity implements Response.Listener<J
         JSONObject jsonObject = null;
         try {
             jsonObject = jsonArray.getJSONObject(0);
-            usufoto.setDato(jsonObject.optString("imagen_usuario"));
+           // usufoto.setDato(jsonObject.optString("imagen_usuario"));
+            if(jsonObject.optString("imagen_usuario")!=null) {
+                Toast.makeText(subir_foto.this, "exito", Toast.LENGTH_LONG).show();
+
+                Glide.with(subir_foto.this)
+                        .load(jsonObject.optString("imagen_usuario"))
+                        .into(imagen);
+            }else{
+                Toast.makeText(subir_foto.this, "fallido", Toast.LENGTH_LONG).show();
+                imagen.setImageResource(R.drawable.sin_imagen);
+            }
             id_usuario = jsonObject.optString("id_usuario");//Obtención del id
             nombre.setText(jsonObject.optString("usuario"));
 
@@ -189,15 +199,6 @@ public class subir_foto extends AppCompatActivity implements Response.Listener<J
         //no funciona decoddificacion en base 64
 
 
-        if(jsonObject.optString("imagen_usuario")!=null) {
-            Toast.makeText(subir_foto.this, "exito", Toast.LENGTH_LONG).show();
-
-            Glide.with(subir_foto.this)
-                    .load(jsonObject.optString("imagen_usuario"))
-                    .into(imagen);
-        }else{
-            Toast.makeText(subir_foto.this, "fallido", Toast.LENGTH_LONG).show();
-            imagen.setImageResource(R.drawable.sin_imagen);
-        }
+       
     }
 }
