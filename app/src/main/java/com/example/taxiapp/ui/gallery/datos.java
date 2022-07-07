@@ -11,29 +11,51 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.taxiapp.MainActivityTaxiMenu;
 import com.example.taxiapp.R;
+import com.example.taxiapp.databinding.FragmentAyudaBinding;
 import com.example.taxiapp.subir_foto;
+import com.example.taxiapp.ui.ayuda.ayudaViewModel;
 
 
-public class datos extends AppCompatActivity {
+public class datos extends Fragment {
+
+        private FragmentAyudaBinding binding;
         Button atras;
-protected void onCreate(Bundle savedInstanceState
-                       ) {
-        super.onCreate(savedInstanceState);
+        public View onCreateView(@NonNull LayoutInflater inflater,
+                                 ViewGroup container, Bundle savedInstanceState) {
 
-        setContentView(R.layout.datosusua);
-        atras = (Button) findViewById(R.id.btn_perfilatras);
+
+                binding = FragmentAyudaBinding.inflate(inflater, container, false);
+                View v = binding.getRoot();
+      atras = (Button) v.findViewById(R.id.btn_perfilatras);
         atras.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        Intent intent = new Intent(datos.this, GalleryFragment.class);
+                       // Intent intent = new Intent(datos.this,GalleryFragment.class);
 
 
-                        startActivity(intent);
+                     //   startActivity(intent);
+
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        //agrega el Fragment en el contenedor, en este caso el FrameLayout con id `FrameLayout`.
+                        ft.add(androidx.navigation.fragment.R.id.nav_host_fragment_container, new GalleryFragment());
+                        ft.commit();
+
+
                 }
         });
+                return v;
+        }
+        @Override
+        public void onDestroyView() {
+                super.onDestroyView();
+                binding = null;
         }
         }
