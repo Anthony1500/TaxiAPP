@@ -42,9 +42,24 @@
         android:name="com.example.taxiapp.ui.maps.mapsFragment"
         android:label="Mapa"
         tools:layout="@layout/fragment_maps" />
-    <activity
+    <fragment
         android:id="@+id/nav_datosusu"
         android:name="com.example.taxiapp.ui.gallery.datos"
-        android:label="datosusua"
+        android:label="mIS dAROS"
         tools:layout="@layout/datosusua" />
+    <action
+        android:id="@+id/datos_llamado"
+        app:destination="@+id/nav_datosusu" />
+    <fragment
+        android:id="@+id/tema"
+        android:name="com.example.taxiapp.ui.gallery.tema"
+        android:label="TEMA"
+        tools:layout="@layout/tema" />
+
+    <action
+        android:id="@+id/tema_llamado"
+        app:destination="@+id/tema" />
+
+
+
 </navigation>

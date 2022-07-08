@@ -9,6 +9,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.taxiapp.R;
 import com.example.taxiapp.databinding.FragmentGalleryBinding;
@@ -32,28 +33,32 @@ public class GalleryFragment extends Fragment {
         bindinga =inflater.inflate(R.layout.tema, container, false);
         View root = binding.getRoot();
 
-        boton_datos=(Button)root.findViewById(R.id.btn_datos);
-        boton_datos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), datos.class);
-                startActivity(i);
-            }
-        });
-        btema=(Button)root.findViewById(R.id.btn_tema);
-        btema.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), tema.class);
-                startActivity(i);
-            }
-        });
 
 
         return root;
 
 
     }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.btnDatos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(GalleryFragment.this)
+                        .navigate(R.id.datos_llamado);
+            }
+        });
+        binding.btnTema.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(GalleryFragment.this)
+                        .navigate(R.id.tema_llamado);
+            }
+        });
+    }
+
 
 
 
