@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.taxiapp.R;
 import com.example.taxiapp.databinding.FragmentGalleryBinding;
+import com.google.android.material.navigation.NavigationView;
 
 public class GalleryFragment extends Fragment {
 
@@ -34,6 +36,14 @@ public class GalleryFragment extends Fragment {
         View root = binding.getRoot();
 
 
+        //******************************************************************************************
+        NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView datousu= (TextView) root.findViewById(R.id.datousu);
+        TextView idusu= (TextView) headerView.findViewById(R.id.idusu);
+
+        datousu.setText(idusu.getText());
+       //******************************************************************************************
 
         return root;
 

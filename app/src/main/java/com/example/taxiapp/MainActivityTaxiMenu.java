@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,29 +26,32 @@ import com.android.volley.toolbox.Volley;
 import com.example.taxiapp.databinding.ActivityMainTaxiMenuBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.collect.Maps;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Map;
+
 public class MainActivityTaxiMenu extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainTaxiMenuBinding binding;
-    TextView datos,datos1;
+    TextView datousu,datos1;
     String info;
-ImageView imagen;
+    ImageView imagen;
+    TextView idusuario;
     RequestQueue rq;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        idusuario= (TextView) findViewById(R.id.idusu);
+        datousu= (TextView) findViewById(R.id.datousu);
         Bundle datr =getIntent().getExtras();
         info = datr.getString("datos");
         String url="https://apps.indoamerica.edu.ec/catastros/apptaxi/select.php?correo="+info;
        // datos.setText(info);
-
-
-
 
 
         binding = ActivityMainTaxiMenuBinding.inflate(getLayoutInflater());
@@ -78,6 +83,7 @@ ImageView imagen;
         imagen = (ImageView) headerView.findViewById(R.id.fotousuario);
         TextView navnombre = (TextView) headerView.findViewById(R.id.nombre);
         TextView navcorreo = (TextView) headerView.findViewById(R.id.correo);
+        TextView navusu = (TextView) headerView.findViewById(R.id.idusu);
 
 
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
@@ -91,6 +97,7 @@ ImageView imagen;
                         jsonObject = response.getJSONObject(i);
                         navnombre.setText(jsonObject.getString("usuario"));
                         navcorreo.setText(Html.fromHtml(jsonObject.getString("correo")));
+                        navusu.setText(Html.fromHtml(jsonObject.getString("id_usuario")));
 
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -107,6 +114,7 @@ ImageView imagen;
         );
         rq= Volley.newRequestQueue(this);
         rq.add(jsonArrayRequest);
+//*************************************************
 
 
 imagen.setOnClickListener(new View.OnClickListener() {

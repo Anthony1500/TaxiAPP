@@ -9,6 +9,7 @@
         <entry key="..\:/Searches/taxiapp/app/src/main/res/drawable/cornerradius_boton.xml" value="0.183" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/activity_main.xml" value="0.14322916666666666" />
+        <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/activity_main_taxi_menu.xml" value="0.19583333333333333" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/activity_maps.xml" value="0.67" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/content_main.xml" value="0.14322916666666666" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/datosusua.xml" value="0.22" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/fragment_maps.xml" value="0.1" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/fragment_second.xml" value="0.14322916666666666" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/login.xml" value="0.2" />
+        <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/nav_header_main_activity_taxi_menu.xml" value="0.19583333333333333" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/recuperar.xml" value="0.1638888888888889" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/recuperar_contrasenia.xml" value="0.33" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/layout/registro_usuario.xml" value="0.2" />
@@ -27,6 +29,7 @@
         <entry key="..\:/Searches/taxiapp/app/src/main/res/menu/main_activity_taxi_menu.xml" value="0.19583333333333333" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/menu/menu_main.xml" value="0.25" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/menu/menu_taxi.xml" value="0.19583333333333333" />
+        <entry key="..\:/Searches/taxiapp/app/src/main/res/menu/submenu.xml" value="0.19583333333333333" />
         <entry key="..\:/Searches/taxiapp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP/app/src/main/res/layout/datosusua.xml" value="0.1" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/TaxiAPP/app/src/main/res/layout/tema.xml" value="0.1" />

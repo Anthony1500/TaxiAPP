@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment"
-    >
+    tools:context=".ui.gallery.GalleryFragment">
 
     <Button
         android:id="@+id/btn_datos"
@@ -16,11 +15,11 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
         android:gravity=""
-        android:textSize="20dp"
         android:text="Mi Cuenta"
-
         android:textAllCaps="false"
+
         android:textColor="@color/colorNegro"
+        android:textSize="20dp"
         app:backgroundTint="@color/cardview_shadow_end_color"
         app:iconTint="@color/cardview_shadow_end_color"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +38,10 @@
         android:fontFamily="sans-serif"
         android:gravity=""
         android:text="Tema"
-        android:textSize="20dp"
-
         android:textAllCaps="false"
+
         android:textColor="@color/colorNegro"
+        android:textSize="20dp"
         app:backgroundTint="@color/cardview_shadow_end_color"
         app:iconTint="@color/cardview_shadow_end_color"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,5 +49,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="@color/cardview_shadow_end_color" />
+
+    <TextView
+        android:id="@+id/datousu"
+        android:layout_width="89dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="143dp"
+        android:layout_marginEnd="180dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
